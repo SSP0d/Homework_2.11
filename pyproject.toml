@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "homework-2-11"
+version = "0.1.0"
+description = "FastAPI Homework_2.11"
+authors = ["Serhii Pidkopai <spodkopay@gmail.com>"]
+readme = "README.md"
+packages = [{include = "homework_2"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.92.0"
+uvicorn = "^0.20.0"
+psycopg2-binary = "^2.9.5"
+sqlalchemy = "^2.0.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
