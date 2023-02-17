@@ -13,8 +13,8 @@ uvicorn = "^0.20.0"
 psycopg2-binary = "^2.9.5"
 sqlalchemy = "^2.0.3"
 alembic = "^1.9.4"
-pydantic = {extras = ["email"], version = "^1.10.5"}
 faker = "^17.0.0"
+pydantic = {version = "1.10.2", extras = ["email"]}
 
 
 [build-system]
