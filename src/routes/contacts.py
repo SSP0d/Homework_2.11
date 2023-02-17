@@ -52,3 +52,21 @@ async def remove_contact(contact_id: int = Path(1, ge=1), db: Session = Depends(
     if contact is None:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found")
     return contact
+
+
+# Search contact by fields
+@router.get("/search{part_to_search}", response_model=List[ContactResponse])
+async def searcher(field: str = Path(min_length=2, max_length=20), db: Session = Depends(get_db)):
+    contacts = await repository_contacts.searcher(field, db)
+    if len(contacts) == 0:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found")
+    return contacts
+
+
+# Bday contacts
+@router.get("/bday", response_model=List[ContactResponse])
+async def birthday_list(db: Session = Depends(get_db)):
+    contact = await repository_contacts.birthday_list(db)
+    if contact is None:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Not Found")
+    return contact
